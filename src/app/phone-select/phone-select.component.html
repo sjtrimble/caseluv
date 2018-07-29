@@ -1,5 +1,5 @@
 <!-- FIRST SHOW BRANDS TO CHOOSE FROM AND SELECT -->
-<div *ngIf="!selectedBrand" class="flex-container">
+<div *ngIf="!selectedBrand" class="select-brands flex-container">
 
     <mat-card *ngFor="let brand of phones | keyvalue" (click)="selectBrand(brand.key)">
         <mat-card-content>
@@ -9,16 +9,11 @@
 </div>
 
 <!-- ONCE BRAND SELECTED - SHOW PHONES TO CHOOSE FROM TO SELECT -->
-<div *ngIf="selectedBrand" class="flex-container">
+<div *ngIf="selectedBrand" class="select-phones flex-container">
 
-    <mat-card>
-        <mat-card-content>
-            <button type="button" aria-label="Navigate to previous screen" mat-icon-button (click)="selectedBrand = null">
-                <mat-icon aria-label="Go back icon">chevron_left</mat-icon>
-            </button>
-        </mat-card-content>
-    </mat-card>
-
+    <button type="button" color="primary" aria-label="Navigate to previous screen" mat-icon-button (click)="selectedBrand = null">
+        <mat-icon aria-label="Go back icon">chevron_left</mat-icon>
+    </button>
 
     <mat-card *ngFor="let phone of phones[selectedBrand]" [routerLink]="['phones', phone]">
         <mat-card-content>
